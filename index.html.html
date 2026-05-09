@@ -1,0 +1,2043 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>El Viajero — Parrilla & Comedor | Dos de Mayo, Misiones</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --carbon: #1a1210;
+    --ember: #c0392b;
+    --ember-dark: #922b21;
+    --gold: #d4a843;
+    --cream: #f5f0e8;
+    --warm-white: #fdfaf5;
+    --smoke: #8a7f78;
+    --wood: #5c3d2e;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--carbon);
+    color: var(--cream);
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 3rem;
+    background: rgba(26,18,16,0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(212,168,67,0.2);
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 0.05em;
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--cream); font-style: italic; }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    color: var(--cream); text-decoration: none; font-size: 0.82rem;
+    letter-spacing: 0.18em; text-transform: uppercase; font-weight: 400;
+    opacity: 0.75; transition: opacity 0.2s, color 0.2s;
+  }
+  .nav-links a:hover { opacity: 1; color: var(--gold); }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    padding: 6rem 2rem 4rem;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 60% 40%, rgba(192,57,43,0.18) 0%, transparent 60%),
+      radial-gradient(ellipse at 20% 80%, rgba(212,168,67,0.10) 0%, transparent 50%),
+      linear-gradient(180deg, #1a1210 0%, #2a1a14 50%, #1a1210 100%);
+  }
+  /* Fuego decorativo SVG */
+  .hero-bg::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+    opacity: 0.4;
+  }
+  .divider-ornament {
+    display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.2s;
+  }
+  .divider-ornament .line { flex: 1; max-width: 80px; height: 1px; background: var(--gold); opacity: 0.5; }
+  .divider-ornament svg { color: var(--gold); }
+
+  .hero-eyebrow {
+    font-size: 0.75rem; letter-spacing: 0.35em; text-transform: uppercase;
+    color: var(--gold); font-weight: 700; margin-bottom: 1.2rem;
+    opacity: 0; animation: fadeUp 0.8s ease forwards 0.3s;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3.5rem, 9vw, 7rem);
+    font-weight: 900;
+    line-height: 0.9;
+    color: var(--warm-white);
+    position: relative; z-index: 1;
+    opacity: 0; animation: fadeUp 0.9s ease forwards 0.4s;
+  }
+  .hero h1 em {
+    font-style: italic; color: var(--ember);
+    display: block;
+  }
+  .hero-sub {
+    font-size: 0.9rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--smoke); margin-top: 1.5rem; font-weight: 400;
+    opacity: 0; animation: fadeUp 0.8s ease forwards 0.6s;
+  }
+  .hero-sub strong { color: var(--gold); font-weight: 700; }
+  .hero-cta {
+    margin-top: 3rem; display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;
+    opacity: 0; animation: fadeUp 0.8s ease forwards 0.8s;
+  }
+  .btn-primary {
+    padding: 0.85rem 2.2rem;
+    background: var(--ember);
+    color: white; font-size: 0.8rem; letter-spacing: 0.2em;
+    text-transform: uppercase; font-weight: 700; font-family: 'Lato', sans-serif;
+    border: none; cursor: pointer; text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--ember-dark); transform: translateY(-2px); }
+  .btn-outline {
+    padding: 0.85rem 2.2rem;
+    border: 1px solid rgba(212,168,67,0.5);
+    color: var(--gold); font-size: 0.8rem; letter-spacing: 0.2em;
+    text-transform: uppercase; font-weight: 700; font-family: 'Lato', sans-serif;
+    cursor: pointer; text-decoration: none; display: inline-block;
+    transition: border-color 0.2s, color 0.2s, transform 0.15s;
+  }
+  .btn-outline:hover { border-color: var(--gold); color: var(--warm-white); transform: translateY(-2px); }
+
+  .scroll-hint {
+    position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+    opacity: 0; animation: fadeIn 1s ease forwards 1.4s;
+  }
+  .scroll-hint span { font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--smoke); }
+  .scroll-arrow {
+    width: 1px; height: 40px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+
+  /* ─── FRANJA DORADA ─── */
+  .gold-strip {
+    background: var(--gold);
+    padding: 0.9rem 2rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
+    align-items: center;
+  }
+  .gold-strip .item {
+    display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+    font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--carbon); font-weight: 700; text-align: center;
+  }
+  .gold-strip .item svg { width: 15px; height: 15px; flex-shrink: 0; }
+  @media (max-width: 640px) {
+    .gold-strip {
+      grid-template-columns: repeat(2, 1fr);
+      padding: 1rem 1.2rem;
+      gap: 0.8rem 0.5rem;
+    }
+    .gold-strip .item { font-size: 0.68rem; letter-spacing: 0.08em; justify-content: flex-start; }
+  }
+
+  /* ─── SECCIONES GENERALES ─── */
+  section { padding: 6rem 2rem; }
+  .container { max-width: 1100px; margin: 0 auto; }
+  .section-label {
+    font-size: 0.7rem; letter-spacing: 0.4em; text-transform: uppercase;
+    color: var(--gold); font-weight: 700; margin-bottom: 0.8rem;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 700; line-height: 1.1; color: var(--warm-white);
+    margin-bottom: 1.5rem;
+  }
+  .section-title em { font-style: italic; color: var(--ember); }
+  .section-body {
+    font-size: 1rem; line-height: 1.85; color: var(--smoke); max-width: 560px;
+    font-weight: 300;
+  }
+
+  /* ─── NOSOTROS ─── */
+  .nosotros-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
+  }
+  .nosotros-img {
+    position: relative;
+  }
+  .nosotros-img .frame {
+    width: 100%; aspect-ratio: 4/5;
+    background: linear-gradient(135deg, #2a1a14 0%, #3d2218 50%, #1a1210 100%);
+    position: relative; overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .nosotros-img .frame::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 50% 70%, rgba(192,57,43,0.3) 0%, transparent 60%);
+  }
+  /* Ícono parrilla SVG dentro del frame */
+  .parrilla-icon {
+    width: 140px; height: 140px; opacity: 0.15;
+  }
+  .nosotros-img .gold-border {
+    position: absolute; top: -12px; left: -12px;
+    width: calc(100% - 20px); height: calc(100% - 20px);
+    border: 1px solid rgba(212,168,67,0.3);
+    pointer-events: none;
+  }
+  .nosotros-img .badge-años {
+    position: absolute; bottom: -1.5rem; right: -1.5rem;
+    width: 100px; height: 100px; border-radius: 50%;
+    background: var(--ember);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+  }
+  .nosotros-img .badge-años .num {
+    font-size: 2rem; font-weight: 900; line-height: 1; color: white;
+  }
+  .nosotros-img .badge-años .txt {
+    font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: rgba(255,255,255,0.85); font-family: 'Lato', sans-serif; font-weight: 700;
+  }
+  .features-list { margin-top: 2rem; display: flex; flex-direction: column; gap: 1rem; }
+  .feature-item { display: flex; gap: 1rem; align-items: flex-start; }
+  .feature-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--gold); flex-shrink: 0; margin-top: 0.5rem;
+  }
+  .feature-item p { font-size: 0.9rem; color: var(--smoke); line-height: 1.6; }
+  .feature-item strong { color: var(--cream); font-weight: 700; }
+
+  /* ─── MENÚ ─── */
+  .menu-section { background: #110d0b; }
+  .menu-tabs {
+    display: flex; gap: 0; margin-bottom: 3rem;
+    border-bottom: 1px solid rgba(212,168,67,0.2);
+  }
+  .tab-btn {
+    padding: 0.8rem 1.8rem;
+    background: none; border: none; cursor: pointer;
+    font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--smoke); font-family: 'Lato', sans-serif; font-weight: 700;
+    border-bottom: 2px solid transparent; margin-bottom: -1px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .tab-btn.active { color: var(--gold); border-bottom-color: var(--gold); }
+  .tab-btn:hover { color: var(--cream); }
+  .menu-grid { display: flex; flex-direction: column; }
+  .menu-item {
+    padding: 1.2rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    display: flex; justify-content: space-between; align-items: flex-start; gap: 2rem;
+  }
+  .menu-item:nth-child(odd) { padding-right: 0; }
+  .menu-item:nth-child(even) { padding-left: 0; border-left: none; }
+  .menu-name { font-size: 1.05rem; color: var(--cream); font-weight: 600; }
+  .menu-desc { font-size: 0.88rem; color: var(--smoke); margin-top: 0.4rem; line-height: 1.6; }
+  .menu-price {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem; color: var(--gold); white-space: nowrap; font-weight: 700;
+    padding-top: 0.1rem; flex-shrink: 0;
+  }
+  .menu-panel { display: none; }
+  .menu-panel.active { display: flex; flex-direction: column; }
+
+  /* ─── ESPECIALIDADES ─── */
+  .espec-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem;
+  }
+  .espec-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(212,168,67,0.12);
+    padding: 2rem 1.5rem;
+    position: relative; overflow: hidden;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+  .espec-card:hover { border-color: rgba(212,168,67,0.4); transform: translateY(-4px); }
+  .espec-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity: 0; transition: opacity 0.3s;
+  }
+  .espec-card:hover::before { opacity: 1; }
+  .espec-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem; font-weight: 900; color: rgba(212,168,67,0.08);
+    line-height: 1; margin-bottom: 1rem;
+  }
+  .espec-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem; font-weight: 700; color: var(--warm-white); margin-bottom: 0.6rem;
+  }
+  .espec-body { font-size: 0.85rem; color: var(--smoke); line-height: 1.7; }
+
+  /* ─── HORARIOS Y CONTACTO ─── */
+  .contacto-section {
+    background: linear-gradient(135deg, #1f1410 0%, #2a1a14 100%);
+    border-top: 1px solid rgba(212,168,67,0.15);
+  }
+  .contacto-grid {
+    display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 4rem;
+  }
+  .contacto-bloque .label {
+    font-size: 0.7rem; letter-spacing: 0.35em; text-transform: uppercase;
+    color: var(--gold); font-weight: 700; margin-bottom: 1.2rem;
+    display: block;
+  }
+  .horario-row {
+    display: flex; justify-content: space-between;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    font-size: 0.88rem;
+  }
+  .horario-row .dia { color: var(--smoke); }
+  .horario-row .hora { color: var(--cream); font-weight: 400; }
+  .contacto-info { display: flex; flex-direction: column; gap: 1.2rem; }
+  .contacto-linea { display: flex; align-items: flex-start; gap: 0.8rem; }
+  .contacto-linea svg { width: 18px; height: 18px; color: var(--gold); flex-shrink: 0; margin-top: 2px; }
+  .contacto-linea p { font-size: 0.9rem; color: var(--smoke); line-height: 1.5; }
+  .contacto-linea strong { color: var(--cream); display: block; font-size: 0.95rem; margin-bottom: 0.1rem; }
+
+  /* ─── RESEÑAS GOOGLE ─── */
+  .resenas-section {
+    background: #0f0c0b;
+    border-top: 1px solid rgba(212,168,67,0.1);
+  }
+  .resenas-header {
+    display: flex; align-items: flex-end; justify-content: space-between;
+    flex-wrap: wrap; gap: 2rem; margin-bottom: 3.5rem;
+  }
+  .google-score-block {
+    display: flex; align-items: center; gap: 2rem;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(212,168,67,0.18);
+    padding: 1.5rem 2rem;
+    border-radius: 4px;
+    flex-shrink: 0;
+  }
+  .score-big {
+    font-family: 'Playfair Display', serif;
+    font-size: 4.5rem; font-weight: 900;
+    color: var(--gold); line-height: 1;
+  }
+  .score-right { display: flex; flex-direction: column; gap: 0.4rem; }
+  .stars-row { display: flex; gap: 3px; }
+  .star-filled { color: #fbbc04; font-size: 1.3rem; }
+  .score-label { font-size: 0.75rem; color: var(--smoke); letter-spacing: 0.1em; }
+  .score-label a {
+    color: var(--gold); text-decoration: none; font-weight: 700;
+    display: inline-flex; align-items: center; gap: 4px;
+  }
+  .score-label a:hover { text-decoration: underline; }
+  .google-badge {
+    display: flex; align-items: center; gap: 0.5rem;
+    font-size: 0.7rem; letter-spacing: 0.1em; color: var(--smoke);
+    margin-top: 0.3rem;
+  }
+  .google-badge svg { width: 16px; height: 16px; }
+
+  .resenas-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem;
+  }
+  .resena-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 4px;
+    padding: 1.4rem 1.3rem;
+    display: flex; flex-direction: column; gap: 0.9rem;
+    transition: border-color 0.25s, transform 0.25s;
+  }
+  .resena-card:hover { border-color: rgba(212,168,67,0.3); transform: translateY(-3px); }
+  .resena-top { display: flex; align-items: center; gap: 0.8rem; }
+  .resena-avatar {
+    width: 38px; height: 38px; border-radius: 50%; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem; font-weight: 700; color: white;
+  }
+  .resena-info { flex: 1; min-width: 0; }
+  .resena-nombre { font-size: 0.88rem; font-weight: 700; color: var(--cream); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .resena-meta { font-size: 0.7rem; color: var(--smoke); margin-top: 1px; }
+  .resena-stars { display: flex; gap: 2px; align-items: center; }
+  .resena-stars .s { color: #fbbc04; font-size: 0.9rem; }
+  .resena-fecha { font-size: 0.7rem; color: var(--smoke); margin-left: 6px; }
+  .resena-texto {
+    font-size: 0.88rem; line-height: 1.75; color: var(--smoke);
+    flex: 1; font-style: italic;
+  }
+  .resena-texto::before { content: '\201C'; color: var(--gold); font-size: 1.2rem; font-style: normal; margin-right: 2px; line-height: 0; vertical-align: -0.3em; }
+  .resena-texto::after  { content: '\201D'; color: var(--gold); font-size: 1.2rem; font-style: normal; margin-left: 2px; line-height: 0; vertical-align: -0.3em; }
+  .resena-scores {
+    display: flex; gap: 0.8rem; flex-wrap: wrap;
+    padding-top: 0.8rem;
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+  .rscore { font-size: 0.7rem; color: var(--smoke); }
+  .rscore strong { color: #fbbc04; font-weight: 700; }
+  .idioma-badge {
+    font-size: 0.65rem; padding: 2px 7px;
+    background: rgba(212,168,67,0.1); color: var(--gold);
+    border-radius: 2px; letter-spacing: 0.08em; align-self: flex-start;
+  }
+  .ver-mas-btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    margin-top: 2rem;
+    font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold); font-weight: 700; text-decoration: none;
+    border: 1px solid rgba(212,168,67,0.3); padding: 0.7rem 1.5rem;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .ver-mas-btn:hover { border-color: var(--gold); background: rgba(212,168,67,0.06); }
+
+  /* ─── CTA FINAL ─── */
+  .cta-final {
+    text-align: center;
+    background: var(--ember);
+    padding: 5rem 2rem;
+    position: relative; overflow: hidden;
+  }
+  .cta-final::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 50% 50%, rgba(0,0,0,0.2) 0%, transparent 70%);
+  }
+  .cta-final h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 900; color: white;
+    position: relative; z-index: 1; margin-bottom: 1rem;
+  }
+  .cta-final p {
+    font-size: 1rem; color: rgba(255,255,255,0.8);
+    position: relative; z-index: 1; margin-bottom: 2.5rem; max-width: 500px; margin-left: auto; margin-right: auto;
+  }
+  .btn-white {
+    padding: 1rem 3rem;
+    background: white; color: var(--ember);
+    font-size: 0.8rem; letter-spacing: 0.2em; text-transform: uppercase;
+    font-weight: 700; font-family: 'Lato', sans-serif;
+    border: none; cursor: pointer; text-decoration: none; display: inline-block;
+    position: relative; z-index: 1;
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .btn-white:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: #0e0a09;
+    padding: 2.5rem 3rem;
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+  footer .logo-foot {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem; font-weight: 700; color: var(--gold);
+  }
+  footer p {
+    font-size: 0.75rem; color: var(--smoke); letter-spacing: 0.05em;
+  }
+  footer .redes { display: flex; gap: 1.2rem; }
+  footer .redes a {
+    width: 34px; height: 34px; border: 1px solid rgba(212,168,67,0.2);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--smoke); text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  footer .redes a:hover { border-color: var(--gold); color: var(--gold); }
+
+  /* ─── ANIMACIONES ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.3; transform: scaleY(0.8); }
+    50% { opacity: 1; transform: scaleY(1); }
+  }
+
+  .nav-lang {
+    display: flex; align-items: center; gap: 4px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(212,168,67,0.25);
+    border-radius: 999px;
+    padding: 4px 5px;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+  .lang-btn {
+    padding: 4px 10px; border-radius: 999px;
+    font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em;
+    border: none; cursor: pointer; font-family: 'Lato', sans-serif;
+    transition: background 0.2s, color 0.2s;
+    background: none; color: var(--smoke);
+  }
+  .lang-btn.active { background: var(--gold); color: var(--carbon); }
+  .lang-btn:hover:not(.active) { color: var(--cream); }
+  .wa-fab {
+    position: fixed; bottom: 1.5rem; left: 1.5rem; z-index: 998;
+    display: flex; align-items: center; gap: 0.6rem;
+    background: #25d366;
+    color: white; text-decoration: none;
+    padding: 0.75rem 1.2rem 0.75rem 0.9rem;
+    border-radius: 999px;
+    font-family: 'Lato', sans-serif; font-size: 0.82rem; font-weight: 700;
+    letter-spacing: 0.05em;
+    box-shadow: 0 4px 20px rgba(37,211,102,0.35);
+    transition: transform 0.2s, box-shadow 0.2s;
+    white-space: nowrap;
+  }
+  .wa-fab:hover { transform: translateY(-3px) scale(1.03); box-shadow: 0 8px 28px rgba(37,211,102,0.45); }
+  .wa-fab svg { flex-shrink: 0; }
+  .wa-fab .wa-pulse {
+    position: absolute; top: -3px; right: -3px;
+    width: 12px; height: 12px; border-radius: 50%;
+    background: #ff3b3b;
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.4); opacity: 0.6; }
+  }
+
+  /* ─── RESPONSIVE COMPLETO ─── */
+  @media (max-width: 768px) {
+    /* Nav — agregar hamburguesa */
+    nav { padding: 0.9rem 1.2rem; }
+    .nav-links { display: none; }
+    .nav-lang { margin-left: auto; }
+
+    /* Secciones */
+    section { padding: 3rem 1.2rem; }
+
+    /* Hero */
+    .hero { padding: 5rem 1.2rem 3rem; min-height: 90vh; }
+    .hero h1 { font-size: clamp(2.4rem, 12vw, 4rem); }
+    .hero-sub { font-size: 0.78rem; letter-spacing: 0.1em; }
+    .hero-cta { flex-direction: column; align-items: center; gap: 0.8rem; width: 100%; }
+    .btn-primary, .btn-outline { width: 100%; text-align: center; justify-content: center; }
+
+    /* Nosotros */
+    .nosotros-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .nosotros-img .frame { aspect-ratio: 4/3; }
+    .nosotros-img .badge-años {
+      width: 100px !important; height: 100px !important;
+      right: 0.5rem !important; bottom: -1.2rem !important;
+      padding: 0.6rem !important;
+    }
+    .nosotros-img .badge-años .num { font-size: 1.9rem !important; }
+    .nosotros-img .badge-años .txt { font-size: 0.45rem !important; }
+    .nosotros-img .gold-border { top: -8px; left: -8px; }
+    .section-title { font-size: clamp(1.7rem, 8vw, 2.5rem); }
+
+    /* Menú */
+    .menu-tabs { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .tab-btn { padding: 0.7rem 0.9rem; font-size: 0.68rem; flex-shrink: 0; letter-spacing: 0.08em; }
+    .menu-item { gap: 0.8rem; }
+    .menu-name { font-size: 0.95rem; }
+    .menu-desc { font-size: 0.82rem; }
+    .menu-price { font-size: 0.9rem; }
+
+    /* Especialidades */
+    .espec-grid { grid-template-columns: 1fr; gap: 1rem; }
+    .espec-card { padding: 1.4rem 1.2rem; }
+    .espec-number { font-size: 2.5rem; }
+
+    /* Contacto */
+    .contacto-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .horario-row { font-size: 0.82rem; }
+    .horario-row .hora { font-size: 0.78rem; }
+
+    /* Reseñas */
+    .resenas-header { flex-direction: column; align-items: flex-start; gap: 1.2rem; }
+    .google-score-block { width: 100%; box-sizing: border-box; gap: 1rem; padding: 1rem; }
+    .score-big { font-size: 3rem; }
+    .resenas-grid { grid-template-columns: 1fr; gap: 1rem; }
+
+    /* CTA final */
+    .cta-final { padding: 3rem 1.2rem; }
+    .cta-final h2 { font-size: clamp(1.6rem, 7vw, 2.5rem); }
+    .btn-white { padding: 0.9rem 2rem; font-size: 0.75rem; }
+
+    /* Footer */
+    footer { padding: 1.8rem 1.2rem; flex-direction: column; align-items: flex-start; gap: 0.8rem; }
+    footer .logo-foot { font-size: 1rem; }
+
+    /* Botón flotante WA: solo ícono */
+    .wa-fab .wa-text { display: none; }
+    .wa-fab { padding: 0.9rem; border-radius: 50%; bottom: 1.2rem; left: 1.2rem; width: 52px; height: 52px; justify-content: center; }
+
+    /* Admin fab */
+    #admin-fab { bottom: 1.2rem; right: 1.2rem; }
+
+    /* Admin overlay */
+    #admin-overlay > div { padding: 2rem 1.2rem; }
+
+    /* Selector de idioma */
+    .lang-btn { padding: 4px 8px; font-size: 0.65rem; }
+  }
+
+  /* Tablet */
+  @media (min-width: 769px) and (max-width: 1024px) {
+    nav { padding: 1rem 2rem; }
+    .nosotros-grid { gap: 2.5rem; }
+    .contacto-grid { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+    .resenas-grid { grid-template-columns: 1fr 1fr; }
+    .espec-grid { grid-template-columns: 1fr 1fr; }
+    section { padding: 4.5rem 2rem; }
+    .hero h1 { font-size: clamp(3rem, 8vw, 6rem); }
+  }
+
+  /* Pantallas muy chicas (< 380px) */
+  @media (max-width: 380px) {
+    .hero h1 { font-size: clamp(2rem, 13vw, 3rem); }
+    .tab-btn { padding: 0.6rem 0.7rem; font-size: 0.62rem; }
+    .score-big { font-size: 2.5rem; }
+    .nosotros-img .badge-años { width: 85px !important; height: 85px !important; }
+    .nosotros-img .badge-años .num { font-size: 1.6rem !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">El <span>Viajero</span></a>
+  <ul class="nav-links">
+    <li><a href="#nosotros" data-es="Nosotros" data-en="About">Nosotros</a></li>
+    <li><a href="#menu" data-es="Menú" data-en="Menu">Menú</a></li>
+    <li><a href="#especialidades" data-es="Especialidades" data-en="Specialties">Especialidades</a></li>
+    <li><a href="#opiniones" data-es="Opiniones" data-en="Reviews">Opiniones</a></li>
+    <li><a href="#contacto" data-es="Contacto" data-en="Contact">Contacto</a></li>
+  </ul>
+  <div class="nav-lang">
+    <button class="lang-btn active" onclick="setLang('es', this)">ES</button>
+    <button class="lang-btn" onclick="setLang('en', this)">EN</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+
+  <div class="divider-ornament">
+    <div class="line"></div>
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>
+    <div class="line"></div>
+  </div>
+
+  <p class="hero-eyebrow" data-es="Dos de Mayo · Misiones · Argentina" data-en="Dos de Mayo · Misiones · Argentina">Dos de Mayo · Misiones · Argentina</p>
+
+  <h1>
+    <span data-es="Parrilla &" data-en="Grill &">Parrilla &</span><br>
+    <em data-es="Comedor" data-en="Diner">Comedor</em>
+  </h1>
+  <p style="font-family:'Playfair Display',serif; font-size:clamp(2rem,6vw,4.5rem); font-weight:900; color:var(--warm-white); opacity:0; animation:fadeUp 0.9s ease forwards 0.5s; position:relative; z-index:1;">El Viajero</p>
+
+  <p class="hero-sub" data-es="Sabor casero · Fuego real · <strong>De familia para vos</strong>" data-en="Home cooking · Real fire · <strong>From our family to you</strong>">Sabor casero · Fuego real · <strong>De familia para vos</strong></p>
+
+  <div class="hero-cta">
+    <a href="#menu" class="btn-primary" data-es="Ver carta" data-en="See menu">Ver carta</a>
+    <a href="https://maps.app.goo.gl/aGfLopTHMQNHuteWA" target="_blank" class="btn-outline" data-es="Cómo llegar" data-en="Get directions">Cómo llegar</a>
+  </div>
+
+  <div class="scroll-hint">
+    <span>Descubrí</span>
+    <div class="scroll-arrow"></div>
+  </div>
+</section>
+
+<!-- FRANJA GOLD -->
+<div class="gold-strip">
+  <div class="item">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg>
+    <span id="strip-1">Parrilla al carbón</span>
+  </div>
+  <div class="item">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+    <span id="strip-2">Platos del día</span>
+  </div>
+  <div class="item">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+    <span id="strip-3">Atención familiar</span>
+  </div>
+  <div class="item">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+    <span id="strip-4">Ingredientes frescos</span>
+  </div>
+  </div>
+</div>
+
+<!-- NOSOTROS -->
+<section id="nosotros">
+  <div class="container">
+    <div class="nosotros-grid">
+      <div class="nosotros-img">
+        <div class="frame" style="position:relative; overflow:hidden; background:#0a0503;">
+          <!-- Animación de fuego con Canvas -->
+          <canvas id="fire-canvas" style="position:absolute; inset:0; width:100%; height:100%;"></canvas>
+          <!-- Overlay para profundidad -->
+          <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(10,5,3,0.6) 0%, transparent 50%);"></div>
+        </div>
+        <div class="gold-border"></div>
+        <div class="badge-años" style="width:130px; height:130px; right:-1rem; bottom:-1rem; flex-direction:column; gap:2px; padding:0.8rem;">
+          <span class="num" style="font-size:2.6rem;">+25</span>
+          <span class="txt" style="font-size:0.55rem; letter-spacing:0.12em; text-align:center; line-height:1.4;">AÑOS<br>ENCENDIENDO<br>EL FUEGO</span>
+        </div>
+      </div>
+
+      <div>
+        <p id="nosotros-label" class="section-label">Nuestra historia</p>
+        <h2 id="nosotros-title" class="section-title">Un lugar que <em>sabe</em> a hogar</h2>
+        <p id="nosotros-p1" class="section-body">
+          El Viajero nació de las manos de una familia misionera con una sola convicción: que una buena comida puede hacerte sentir en casa, aunque estés lejos. Desde Dos de Mayo, cocinamos con fuego real, ingredientes frescos y el cariño de siempre.
+        </p>
+        <p id="nosotros-p2" class="section-body" style="margin-top:1rem;">
+          Somos un comedor de parrilla con alma familiar, donde cada corte se hace a las brasas y cada plato del día sale de la cocina como si fuera para la propia mesa.
+        </p>
+
+        <div class="features-list">
+          <div class="feature-item">
+            <div class="feature-dot"></div>
+            <p><strong id="feat1-title">Parrilla a las brasas</strong> — <span id="feat1-body">Cortes seleccionados al punto que pedís, con el ahumado que solo da el carbón.</span></p>
+          </div>
+          <div class="feature-item">
+            <div class="feature-dot"></div>
+            <p><strong id="feat2-title">Comida casera del día</strong> — <span id="feat2-body">Guisos, pastas, minutas y sopas que cambian según la temporada y los productos locales.</span></p>
+          </div>
+          <div class="feature-item">
+            <div class="feature-dot"></div>
+            <p><strong id="feat3-title">Para toda la familia</strong> — <span id="feat3-body">Ambiente cómodo, porciones generosas y atención de personas que te conocen por el nombre.</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MENÚ -->
+<section id="menu" class="menu-section">
+  <div class="container">
+    <p id="menu-label" class="section-label">Lo que servimos</p>
+    <h2 id="menu-title" class="section-title">Nuestra <em>carta</em></h2>
+
+    <div class="menu-tabs">
+      <button id="tab-espeto-btn" class="tab-btn active" onclick="switchTab('espeto', this)">⭐ Espeto Corrido</button>
+      <button id="tab-dia-btn" class="tab-btn" onclick="switchTab('dia', this)">Plato del día</button>
+      <button id="tab-carta-btn" class="tab-btn" onclick="switchTab('carta', this)">A la carta</button>
+    </div>
+
+    <!-- ESPETO CORRIDO -->
+    <div id="tab-espeto" class="menu-panel active">
+
+      <!-- Banner destacado -->
+      <div style="grid-column:1/-1; background:linear-gradient(135deg,rgba(192,57,43,0.15),rgba(212,168,67,0.08)); border:1px solid rgba(212,168,67,0.25); border-radius:6px; padding:1.5rem 1.8rem; margin-bottom:1.5rem; display:flex; gap:1.2rem; align-items:flex-start;">
+        <div style="font-size:2.2rem; line-height:1; flex-shrink:0;">🔥</div>
+        <div>
+          <p style="font-family:'Playfair Display',serif; font-size:1.3rem; font-weight:700; color:var(--warm-white); margin-bottom:0.4rem;" id="espeto-banner-title">Espeto Corrido — La especialidad de la casa</p>
+          <p style="font-size:0.88rem; color:var(--smoke); line-height:1.7;" id="espeto-banner-desc">Asado argentino a la manera de El Viajero: comés todo lo que quieras, a tu ritmo. Las brasas nunca se apagan. Incluye todo lo que ves acá abajo — sin límites, sin apuros.</p>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <div>
+          <div class="menu-name" id="espeto-item1-name">Carnes a las brasas — sin límite</div>
+          <div class="menu-desc" id="espeto-item1-desc">Asado de tira, vacío, chorizos, morcilla y lo que salga del fuego ese día</div>
+        </div>
+        <div class="menu-price">✓ Incluido</div>
+      </div>
+      <div class="menu-item">
+        <div>
+          <div class="menu-name" id="espeto-item2-name">Ensaladas frescas</div>
+          <div class="menu-desc" id="espeto-item2-desc">Mixta, de tomate, de zanahoria — se reponen durante toda la comida</div>
+        </div>
+        <div class="menu-price">✓ Incluido</div>
+      </div>
+      <div class="menu-item">
+        <div>
+          <div class="menu-name" id="espeto-item3-name">Pickles & encurtidos</div>
+          <div class="menu-desc" id="espeto-item3-desc">Pepinillos, zanahorias, cebolla — para equilibrar el asado</div>
+        </div>
+        <div class="menu-price">✓ Incluido</div>
+      </div>
+      <div class="menu-item">
+        <div>
+          <div class="menu-name" id="espeto-item4-name">Mandioca frita</div>
+          <div class="menu-desc" id="espeto-item4-desc">El acompañamiento misionero por excelencia, crocante y abundante</div>
+        </div>
+        <div class="menu-price">✓ Incluido</div>
+      </div>
+
+      <div style="grid-column:1/-1; margin-top:1.2rem; padding:1rem 1.2rem; background:rgba(212,168,67,0.06); border-left:3px solid var(--gold); border-radius:0 4px 4px 0;">
+        <p style="font-size:0.8rem; color:var(--smoke); line-height:1.7;" id="espeto-nota">
+          <strong style="color:var(--gold);">¿Cuánto cuesta?</strong> — Consultanos por WhatsApp o al llegar. El precio puede variar según el día. Reservas para grupos recomendadas con anticipación.
+        </p>
+      </div>
+    </div>
+
+    <!-- PLATO DEL DÍA -->
+    <div id="tab-dia" class="menu-panel">
+
+      <div style="grid-column:1/-1; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:6px; padding:1.5rem 1.8rem; margin-bottom:1.5rem;">
+        <p style="font-size:0.88rem; color:var(--smoke); line-height:1.75;" id="dia-intro">
+          Cada día hay un plato diferente, preparado con lo que trae la temporada. Nunca es fijo — pero siempre es casero y abundante. <strong style="color:var(--cream);">Todos los platos incluyen ensalada, encurtidos, pan y mandioca frita.</strong>
+        </p>
+      </div>
+
+      <div class="menu-item">
+        <div>
+          <div class="menu-name" id="dia-item1-name">Guiso de poroto o lentejas</div>
+          <div class="menu-desc" id="dia-item1-desc">Receta casera con verduras, chorizo y el toque de siempre</div>
+        </div>
+        <div class="menu-price">Consultar</div>
+      </div>
+      <div class="menu-item">
+        <div>
+          <div class="menu-name" id="dia-item2-name">Pastel de papa</div>
+          <div class="menu-desc" id="dia-item2-desc">Carne picada con puré gratinado, directo al horno</div>
+        </div>
+        <div class="menu-price">Consultar</div>
+      </div>
+      <div class="menu-item">
+        <div>
+          <div class="menu-name" id="dia-item3-name">Canelones</div>
+          <div class="menu-desc" id="dia-item3-desc">De carne o de verdura, con salsa blanca y tuco</div>
+        </div>
+        <div class="menu-price">Consultar</div>
+      </div>
+      <div class="menu-item">
+        <div>
+          <div class="menu-name" id="dia-item4-name">Pastas del día</div>
+          <div class="menu-desc" id="dia-item4-desc">Fideos, ñoquis o tallarines — con la salsa que corresponda ese día</div>
+        </div>
+        <div class="menu-price">Consultar</div>
+      </div>
+      <div class="menu-item">
+        <div>
+          <div class="menu-name" id="dia-item5-name">Carne a la olla / Estofado</div>
+          <div class="menu-desc" id="dia-item5-desc">Cocción lenta, caldosa y con todas las verduras</div>
+        </div>
+        <div class="menu-price">Consultar</div>
+      </div>
+      <div class="menu-item">
+        <div>
+          <div class="menu-name" id="dia-item6-name">Y mucho más…</div>
+          <div class="menu-desc" id="dia-item6-desc">El menú cambia cada día. Consultanos por WhatsApp para saber qué hay hoy</div>
+        </div>
+        <div class="menu-price">
+          <a href="https://wa.me/543764830275?text=Hola!%20%C2%BFQu%C3%A9%20hay%20de%20plato%20del%20d%C3%ADa%20hoy%3F%20%F0%9F%8D%BD%EF%B8%8F" target="_blank" style="color:var(--gold); text-decoration:none; font-size:0.75rem; font-weight:700; white-space:nowrap;">Preguntar →</a>
+        </div>
+      </div>
+
+      <div style="grid-column:1/-1; margin-top:1rem; padding:0.9rem 1.2rem; background:rgba(212,168,67,0.06); border-left:3px solid var(--gold); border-radius:0 4px 4px 0;">
+        <p style="font-size:0.8rem; color:var(--smoke);" id="dia-incluye">
+          <strong style="color:var(--gold);">Todos los platos incluyen:</strong> ensalada fresca · encurtidos · mandioca frita
+        </p>
+      </div>
+    </div>
+
+    <!-- A LA CARTA -->
+    <div id="tab-carta" class="menu-panel">
+
+      <div style="grid-column:1/-1; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:6px; padding:1.5rem 1.8rem; margin-bottom:1.5rem;">
+        <p style="font-size:0.88rem; color:var(--smoke); line-height:1.75;" id="carta-intro">
+          Platos disponibles todos los días, sin importar el menú del momento. <strong style="color:var(--cream);">Todos incluyen ensalada, encurtidos, pan y mandioca frita.</strong>
+        </p>
+      </div>
+
+      <div class="menu-item">
+        <div>
+          <div class="menu-name" id="carta-item1-name">Chuleta simple</div>
+          <div class="menu-desc" id="carta-item1-desc">A las brasas o a la plancha, jugosa y bien temperada</div>
+        </div>
+        <div class="menu-price">Consultar</div>
+      </div>
+      <div class="menu-item">
+        <div>
+          <div class="menu-name" id="carta-item2-name">Chuleta a caballo</div>
+          <div class="menu-desc" id="carta-item2-desc">Con huevo frito encima — el clásico que nunca falla</div>
+        </div>
+        <div class="menu-price">Consultar</div>
+      </div>
+      <div class="menu-item">
+        <div>
+          <div class="menu-name" id="carta-item3-name">Milanesa</div>
+          <div class="menu-desc" id="carta-item3-desc">Rebozada a la manera casera, bien crocante</div>
+        </div>
+        <div class="menu-price">Consultar</div>
+      </div>
+      <div class="menu-item">
+        <div>
+          <div class="menu-name" id="carta-item4-name">Marinera</div>
+          <div class="menu-desc" id="carta-item4-desc">Receta de la casa, un clásico que no falla</div>
+        </div>
+        <div class="menu-price">Consultar</div>
+      </div>
+      <div class="menu-item">
+        <div>
+          <div class="menu-name" id="carta-item5-name">Pollo a la plancha</div>
+          <div class="menu-desc" id="carta-item5-desc">Jugoso, bien condimentado y cocinado al punto justo</div>
+        </div>
+        <div class="menu-price">Consultar</div>
+      </div>
+
+      <div style="grid-column:1/-1; margin-top:1rem; padding:0.9rem 1.2rem; background:rgba(212,168,67,0.06); border-left:3px solid var(--gold); border-radius:0 4px 4px 0;">
+        <p style="font-size:0.8rem; color:var(--smoke);" id="carta-incluye">
+          <strong style="color:var(--gold);">Todos los platos incluyen:</strong> ensalada fresca · encurtidos · mandioca frita
+        </p>
+      </div>
+    </div>
+
+    <p style="font-size:0.75rem; color:var(--smoke); margin-top:2rem; letter-spacing:0.05em;" id="menu-nota">
+      * Los precios varían. Consultanos por WhatsApp o al llegar al local para el precio del día.
+    </p>
+  </div>
+</section>
+
+<!-- ESPECIALIDADES -->
+<section id="especialidades">
+  <div class="container">
+    <p id="espec-label" class="section-label">Lo que nos distingue</p>
+    <h2 id="espec-title" class="section-title">Nuestras <em>especialidades</em></h2>
+
+    <div class="espec-grid">
+      <div class="espec-card">
+        <div class="espec-number">01</div>
+        <div id="espec1-title" class="espec-title">El asado de los viernes</div>
+        <p id="espec1-body" class="espec-body">El ritual más esperado de la semana. Brasas lentas, cortes enteros y el aroma que se siente desde la vereda. Una tradición que mantenemos desde el primer día.</p>
+      </div>
+      <div class="espec-card">
+        <div class="espec-number">02</div>
+        <div id="espec2-title" class="espec-title">Plato del día</div>
+        <p id="espec2-body" class="espec-body">Cada día hay algo diferente saliendo de la cocina: guisos, estofados, pastel de papa, canelones, pastas o carne a la olla. Siempre casero, siempre abundante, siempre con guarnición completa.</p>
+      </div>
+      <div class="espec-card">
+        <div class="espec-number">03</div>
+        <div id="espec3-title" class="espec-title">Todo incluye</div>
+        <p id="espec3-body" class="espec-body">En El Viajero no hay medias tintas. Cada plato viene con ensalada fresca, encurtidos y mandioca frita. Porque acá se come bien, de verdad.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO Y HORARIOS -->
+<section id="contacto" class="contacto-section">
+  <div class="container">
+    <p id="contacto-label" class="section-label">Vení a visitarnos</p>
+    <h2 id="contacto-title" class="section-title" style="margin-bottom:3rem;">Horarios & <em>contacto</em></h2>
+
+    <div class="contacto-grid">
+      <div class="contacto-bloque">
+        <span id="horarios-label" class="label">Horarios de atención</span>
+        <div class="horario-row"><span class="dia">Lunes</span><span class="hora">12:00 – 15:00</span></div>
+        <div class="horario-row"><span class="dia">Martes</span><span class="hora">12:00 – 15:00</span></div>
+        <div class="horario-row"><span class="dia">Miércoles</span><span class="hora">12:00 – 15:00</span></div>
+        <div class="horario-row"><span class="dia">Jueves</span><span class="hora">12:00 – 15:00 / 20:00 – 23:00</span></div>
+        <div class="horario-row"><span class="dia">Viernes</span><span class="hora">12:00 – 15:00 / 20:00 – 23:30</span></div>
+        <div class="horario-row"><span class="dia">Sábado</span><span class="hora">12:00 – 15:30 / 20:00 – 00:00</span></div>
+        <div class="horario-row"><span class="dia">Domingo</span><span class="hora"><a href="https://wa.me/543764830275?text=Hola!%20Quiero%20consultar%20el%20horario%20del%20domingo%20🍖" target="_blank" style="color:var(--gold); text-decoration:none; font-weight:700;">Consultanos al WhatsApp</a></span></div>
+        <p style="font-size:0.72rem; color:var(--smoke); margin-top:1rem; letter-spacing:0.05em;">* Confirmá disponibilidad por WhatsApp en feriados.</p>
+      </div>
+
+      <div class="contacto-bloque">
+        <span id="como-llegar-label" class="label">Cómo encontrarnos</span>
+        <div class="contacto-info">
+          <div class="contacto-linea">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <p><strong>Dirección</strong>Acceso Jose da Rosa S/N, Dos de Mayo, Misiones</p>
+          </div>
+          <div class="contacto-linea">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3-8.59 2 2 0 0 1 1.99-2.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <p><strong>WhatsApp</strong><a href="https://wa.me/543764830275" target="_blank" style="color:var(--gold); text-decoration:none; font-weight:700;">+54 3764 830275</a></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="contacto-bloque">
+        <span id="eventos-label" class="label">¿Tenés un evento?</span>
+        <p id="eventos-body" style="font-size:0.9rem; color:var(--smoke); line-height:1.8; margin-bottom:1.5rem;">
+          Organizamos almuerzos y cenas para grupos, cumpleaños y reuniones familiares. Consultanos disponibilidad y armamos algo especial para vos.
+        </p>
+        <a href="https://wa.me/543764830275?text=Hola!%20Quiero%20consultar%20sobre%20un%20evento%20en%20El%20Viajero%20🍖" target="_blank" class="btn-primary" style="display:inline-flex; align-items:center; gap:8px; text-decoration:none; font-size:0.78rem;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.555 4.116 1.527 5.845L.057 23.886l6.218-1.433A11.954 11.954 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 0 1-5.003-1.368l-.36-.213-3.69.851.871-3.597-.234-.371A9.818 9.818 0 1 1 12 21.818z"/></svg>
+          <span id="eventos-btn">Consultar por evento</span>
+        </a>
+        <div style="margin-top:2rem; padding-top:1.5rem; border-top:1px solid rgba(255,255,255,0.06);">
+          <p id="pedidos-txt" style="font-size:0.72rem; color:var(--smoke); letter-spacing:0.08em; line-height:1.7;">
+            También hacemos <strong style="color:var(--cream);">pedidos para llevar</strong>. Avisanos con anticipación y preparamos todo listo para buscar.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESEÑAS GOOGLE -->
+<section id="opiniones" class="resenas-section">
+  <div class="container">
+
+    <div class="resenas-header">
+      <div>
+        <p id="resenas-label" class="section-label">Lo que dicen nuestros clientes</p>
+        <h2 id="resenas-title" class="section-title">Opiniones en <em>Google</em></h2>
+      </div>
+      <div class="google-score-block">
+        <div class="score-big">4.8</div>
+        <div class="score-right">
+          <div class="stars-row">
+            <span class="star-filled">★</span>
+            <span class="star-filled">★</span>
+            <span class="star-filled">★</span>
+            <span class="star-filled">★</span>
+            <span class="star-filled">★</span>
+          </div>
+          <div class="score-label">Basado en opiniones reales</div>
+          <div class="score-label"><a href="https://www.google.com/search?q=parrilla+comedor+el+viajero+dos+de+mayo+misiones" target="_blank">Ver en Google Maps ↗</a></div>
+          <div class="google-badge">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z" fill="#4285F4"/><path d="M12 6.5c1.52 0 2.86.58 3.88 1.52L18.7 5.2A9.45 9.45 0 0 0 12 2.5C8.36 2.5 5.2 4.54 3.5 7.5l3.26 2.53A5.5 5.5 0 0 1 12 6.5z" fill="#EA4335"/><path d="M12 17.5a5.5 5.5 0 0 1-5.24-3.53L3.5 16.5A9.5 9.5 0 0 0 12 21.5c2.38 0 4.56-.87 6.23-2.3l-3.06-2.37A5.46 5.46 0 0 1 12 17.5z" fill="#34A853"/><path d="M21.5 12c0-.65-.06-1.28-.17-1.9H12v3.6h5.35a4.6 4.6 0 0 1-1.98 3l3.06 2.37A9.45 9.45 0 0 0 21.5 12z" fill="#4285F4"/><path d="M6.76 14.03A5.5 5.5 0 0 1 6.5 12c0-.7.12-1.38.33-2.02L3.57 7.45A9.47 9.47 0 0 0 2.5 12c0 1.55.37 3.01 1.02 4.3l3.24-2.27z" fill="#FBBC05"/></svg>
+            Verificado en Google
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="resenas-grid">
+
+      <!-- Reseña 1 -->
+      <div class="resena-card">
+        <div class="resena-top">
+          <div class="resena-avatar" style="background:#c0392b;">L</div>
+          <div class="resena-info">
+            <div class="resena-nombre">Lucero Pariona</div>
+            <div class="resena-meta">1 opinión · Google</div>
+          </div>
+        </div>
+        <div class="resena-stars">
+          <span class="s">★★★★★</span>
+          <span class="resena-fecha">Oct 2024</span>
+        </div>
+        <p class="resena-texto">Muy lindo espacio para disfrutar de buena comida casera, la atención es amorosa y muy servicial.</p>
+      </div>
+
+      <!-- Reseña 2 -->
+      <div class="resena-card">
+        <div class="resena-top">
+          <div class="resena-avatar" style="background:#8e44ad;">D</div>
+          <div class="resena-info">
+            <div class="resena-nombre">Debora Rojas</div>
+            <div class="resena-meta">Local Guide · 9 opiniones</div>
+          </div>
+        </div>
+        <div class="resena-stars">
+          <span class="s">★★★★★</span>
+          <span class="resena-fecha">Oct 2024</span>
+        </div>
+        <p class="resena-texto">Muy buena la atención, la comida exelente lo pasamos muy bien, super cálido el ambiente.</p>
+        <div class="resena-scores">
+          <span class="rscore">Comida <strong>5/5</strong></span>
+          <span class="rscore">Servicio <strong>5/5</strong></span>
+          <span class="rscore">Ambiente <strong>5/5</strong></span>
+        </div>
+      </div>
+
+      <!-- Reseña 3 -->
+      <div class="resena-card">
+        <div class="resena-top">
+          <div class="resena-avatar" style="background:#2980b9;">H</div>
+          <div class="resena-info">
+            <div class="resena-nombre">Hadewych Bossuyt</div>
+            <div class="resena-meta">4 opiniones · 2 fotos</div>
+          </div>
+        </div>
+        <div class="resena-stars">
+          <span class="s">★★★★★</span>
+          <span class="resena-fecha">Ene 2025</span>
+        </div>
+        <span class="idioma-badge">🇧🇪 Belga</span>
+        <p class="resena-texto">Ongelooflijk lekker gegeten, en zeer zeer vriendelijke uitbaters! — ¡Comida increíblemente rica y dueños muy, muy amables!</p>
+        <div class="resena-scores">
+          <span class="rscore">Comida <strong>5/5</strong></span>
+          <span class="rscore">Servicio <strong>5/5</strong></span>
+          <span class="rscore">Ambiente <strong>5/5</strong></span>
+        </div>
+      </div>
+
+      <!-- Reseña 4 -->
+      <div class="resena-card">
+        <div class="resena-top">
+          <div class="resena-avatar" style="background:#16a085;">B</div>
+          <div class="resena-info">
+            <div class="resena-nombre">Brisa Frank</div>
+            <div class="resena-meta">2 opiniones · Google</div>
+          </div>
+        </div>
+        <div class="resena-stars">
+          <span class="s">★★★★★</span>
+          <span class="resena-fecha">Ene 2025</span>
+        </div>
+        <p class="resena-texto">Excelente comida, abundante y casera. Muy buena atención.</p>
+        <div class="resena-scores">
+          <span class="rscore">Comida <strong>5/5</strong></span>
+          <span class="rscore">Servicio <strong>5/5</strong></span>
+          <span class="rscore">Ambiente <strong>5/5</strong></span>
+        </div>
+      </div>
+
+      <!-- Reseña 5 -->
+      <div class="resena-card">
+        <div class="resena-top">
+          <div class="resena-avatar" style="background:#d35400;">C</div>
+          <div class="resena-info">
+            <div class="resena-nombre">Claudia Fernandez</div>
+            <div class="resena-meta">Local Guide · 77 opiniones · 82 fotos</div>
+          </div>
+        </div>
+        <div class="resena-stars">
+          <span class="s">★★★★★</span>
+          <span class="resena-fecha">Ago 2024</span>
+        </div>
+        <p class="resena-texto">Riquísima la comida, abundante y casera! Excelente la atención!! Volveremos!!!</p>
+      </div>
+
+      <!-- Reseña 6 -->
+      <div class="resena-card">
+        <div class="resena-top">
+          <div class="resena-avatar" style="background:#27ae60;">S</div>
+          <div class="resena-info">
+            <div class="resena-nombre">Sergio Sosa</div>
+            <div class="resena-meta">Local Guide · 54 opiniones · 31 fotos</div>
+          </div>
+        </div>
+        <div class="resena-stars">
+          <span class="s">★★★★★</span>
+          <span class="resena-fecha">Nov 2024</span>
+        </div>
+        <p class="resena-texto">Siempre que paso soy muy bien atendido. Muy recomendable para viajeros. Excelente todo.</p>
+      </div>
+
+      <!-- Reseña 7 -->
+      <div class="resena-card">
+        <div class="resena-top">
+          <div class="resena-avatar" style="background:#7f8c8d;">L</div>
+          <div class="resena-info">
+            <div class="resena-nombre">Lorena Da Silva</div>
+            <div class="resena-meta">Local Guide · 4 opiniones · 10 fotos</div>
+          </div>
+        </div>
+        <div class="resena-stars">
+          <span class="s">★★★★★</span>
+          <span class="resena-fecha">Ago 2024</span>
+        </div>
+        <p class="resena-texto">Hermoso lugar! Super recomendado. Excelente atención y la comida casera y riquísima.</p>
+      </div>
+
+      <!-- Reseña 8 -->
+      <div class="resena-card">
+        <div class="resena-top">
+          <div class="resena-avatar" style="background:#c0392b;">G</div>
+          <div class="resena-info">
+            <div class="resena-nombre">Gilda Minig</div>
+            <div class="resena-meta">1 opinión · Google</div>
+          </div>
+        </div>
+        <div class="resena-stars">
+          <span class="s">★★★★★</span>
+          <span class="resena-fecha">Ene 2025</span>
+        </div>
+        <p class="resena-texto">Hermoso lugar! Excelente atención, súper recomendable y la comida muy rica.</p>
+      </div>
+
+      <!-- Reseña 9 -->
+      <div class="resena-card">
+        <div class="resena-top">
+          <div class="resena-avatar" style="background:#2471a3;">D</div>
+          <div class="resena-info">
+            <div class="resena-nombre">Diego Mastella</div>
+            <div class="resena-meta">Local Guide · 70 opiniones · 16 fotos</div>
+          </div>
+        </div>
+        <div class="resena-stars">
+          <span class="s">★★★★★</span>
+          <span class="resena-fecha">Ene 2025</span>
+        </div>
+        <span class="idioma-badge">🇧🇷 Portugués</span>
+        <p class="resena-texto">Comida maravilhosa! Lugar ótimo! Super recomendo.</p>
+      </div>
+
+    </div>
+
+    <a id="ver-mas-btn" href="https://www.google.com/search?q=parrilla+comedor+el+viajero+dos+de+mayo+misiones" target="_blank" class="ver-mas-btn">
+      Ver todas las opiniones en Google ↗
+    </a>
+
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<div class="cta-final">
+  <h2 id="cta-title">Te esperamos en la mesa</h2>
+  <p id="cta-body">Vení con hambre y con ganas. El fuego ya está encendido.</p>
+  <a id="cta-btn" href="https://maps.app.goo.gl/aGfLopTHMQNHuteWA" target="_blank" class="btn-white">Ver en Google Maps</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="logo-foot">El Viajero — Parrilla & Comedor</div>
+  <p id="footer-sub">Dos de Mayo · Misiones · Argentina</p>
+  <a href="https://wa.me/543764830275" target="_blank" style="display:flex; align-items:center; gap:8px; color:var(--gold); text-decoration:none; font-size:0.82rem; font-weight:700; letter-spacing:0.05em;">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="color:#25d366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.555 4.116 1.527 5.845L.057 23.886l6.218-1.433A11.954 11.954 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 0 1-5.003-1.368l-.36-.213-3.69.851.871-3.597-.234-.371A9.818 9.818 0 1 1 12 21.818z"/></svg>
+    +54 3764 830275
+  </a>
+</footer>
+
+<!-- ═══════════════════════════════════════════
+     PANEL DE ADMINISTRACIÓN — oculto por defecto
+     Acceso: viajero.com.ar/admin o agregar #admin a la URL
+════════════════════════════════════════════ -->
+<div id="admin-overlay" style="display:none; position:fixed; inset:0; z-index:9999; background:rgba(10,6,5,0.97); overflow-y:auto;">
+  <div style="max-width:480px; margin:0 auto; padding:2.5rem 1.5rem; min-height:100vh; display:flex; flex-direction:column; justify-content:center;">
+
+    <!-- LOGIN -->
+    <div id="admin-login">
+      <div style="text-align:center; margin-bottom:2.5rem;">
+        <p style="font-size:0.7rem; letter-spacing:0.35em; text-transform:uppercase; color:#d4a843; font-weight:700; margin-bottom:0.6rem;">Parrilla El Viajero</p>
+        <h2 style="font-family:'Playfair Display',serif; font-size:1.8rem; font-weight:700; color:#fdfaf5;">Panel de administración</h2>
+        <p style="font-size:0.85rem; color:#8a7f78; margin-top:0.5rem;">Ingresá con tu usuario y contraseña</p>
+      </div>
+
+      <div style="display:flex; flex-direction:column; gap:1rem;">
+        <div>
+          <label style="font-size:0.72rem; letter-spacing:0.2em; text-transform:uppercase; color:#8a7f78; display:block; margin-bottom:0.5rem;">Usuario</label>
+          <input id="admin-user" type="text" placeholder="admin"
+            style="width:100%; padding:0.85rem 1rem; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.12); color:#fdfaf5; font-family:'Lato',sans-serif; font-size:0.95rem; outline:none; border-radius:3px;">
+        </div>
+        <div>
+          <label style="font-size:0.72rem; letter-spacing:0.2em; text-transform:uppercase; color:#8a7f78; display:block; margin-bottom:0.5rem;">Contraseña</label>
+          <input id="admin-pass" type="password" placeholder="••••••••"
+            style="width:100%; padding:0.85rem 1rem; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.12); color:#fdfaf5; font-family:'Lato',sans-serif; font-size:0.95rem; outline:none; border-radius:3px;">
+        </div>
+        <div id="login-error" style="display:none; font-size:0.82rem; color:#e74c3c; padding:0.6rem 0.8rem; background:rgba(231,76,60,0.1); border-radius:3px; border-left:3px solid #e74c3c;">
+          Usuario o contraseña incorrectos.
+        </div>
+        <button onclick="doLogin()"
+          style="margin-top:0.5rem; padding:1rem; background:#c0392b; color:white; border:none; cursor:pointer; font-family:'Lato',sans-serif; font-size:0.82rem; font-weight:700; letter-spacing:0.2em; text-transform:uppercase; border-radius:3px; transition:background 0.2s;">
+          Ingresar
+        </button>
+      </div>
+
+      <p style="text-align:center; font-size:0.72rem; color:#8a7f78; margin-top:2rem;">
+        <a onclick="closeAdmin()" style="color:#d4a843; cursor:pointer; text-decoration:none;">← Volver al sitio</a>
+      </p>
+    </div>
+
+    <!-- PANEL (se muestra tras login exitoso) -->
+    <div id="admin-panel" style="display:none;">
+
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:2.5rem;">
+        <div>
+          <p style="font-size:0.7rem; letter-spacing:0.3em; text-transform:uppercase; color:#d4a843; margin-bottom:0.3rem;">Bienvenida 👋</p>
+          <h2 style="font-family:'Playfair Display',serif; font-size:1.6rem; color:#fdfaf5;">Panel El Viajero</h2>
+        </div>
+        <button onclick="doLogout()"
+          style="padding:0.5rem 1rem; border:1px solid rgba(255,255,255,0.15); background:none; color:#8a7f78; cursor:pointer; font-family:'Lato',sans-serif; font-size:0.75rem; letter-spacing:0.15em; text-transform:uppercase; border-radius:3px;">
+          Salir
+        </button>
+      </div>
+
+      <!-- CARTA PDF -->
+      <div style="background:rgba(255,255,255,0.03); border:1px solid rgba(212,168,67,0.2); border-radius:6px; padding:1.5rem; margin-bottom:1.2rem;">
+        <div style="display:flex; align-items:center; gap:0.8rem; margin-bottom:1rem;">
+          <div style="width:36px; height:36px; background:rgba(192,57,43,0.2); border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c0392b" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+          </div>
+          <div>
+            <p style="font-size:0.95rem; font-weight:700; color:#fdfaf5;">Actualizar carta / menú</p>
+            <p style="font-size:0.78rem; color:#8a7f78;">Subí el PDF con los precios actualizados</p>
+          </div>
+        </div>
+
+        <!-- Estado actual -->
+        <div id="carta-estado" style="padding:0.8rem; background:rgba(255,255,255,0.03); border-radius:4px; margin-bottom:1rem; font-size:0.82rem; color:#8a7f78;">
+          Cargando estado...
+        </div>
+
+        <!-- Zona de carga -->
+        <div id="drop-zone"
+          style="border:2px dashed rgba(212,168,67,0.3); border-radius:6px; padding:2rem; text-align:center; cursor:pointer; transition:border-color 0.2s, background 0.2s;"
+          onclick="document.getElementById('pdf-input').click()"
+          ondragover="event.preventDefault(); this.style.borderColor='#d4a843'; this.style.background='rgba(212,168,67,0.05)'"
+          ondragleave="this.style.borderColor='rgba(212,168,67,0.3)'; this.style.background=''"
+          ondrop="handleDrop(event)">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#d4a843" stroke-width="1.5" style="margin:0 auto 0.8rem; display:block; opacity:0.6"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          <p style="font-size:0.88rem; color:#d4a843; font-weight:700; margin-bottom:0.3rem;">Tocá aquí para elegir el PDF</p>
+          <p style="font-size:0.75rem; color:#8a7f78;">o arrastrá el archivo acá</p>
+          <input id="pdf-input" type="file" accept=".pdf" style="display:none;" onchange="handlePDF(this.files[0])">
+        </div>
+
+        <!-- Barra de progreso -->
+        <div id="upload-progress" style="display:none; margin-top:1rem;">
+          <div style="display:flex; justify-content:space-between; margin-bottom:0.4rem;">
+            <span id="upload-filename" style="font-size:0.78rem; color:#fdfaf5;"></span>
+            <span id="upload-pct" style="font-size:0.78rem; color:#d4a843; font-weight:700;">0%</span>
+          </div>
+          <div style="height:4px; background:rgba(255,255,255,0.08); border-radius:2px; overflow:hidden;">
+            <div id="progress-bar" style="height:100%; width:0%; background:#c0392b; border-radius:2px; transition:width 0.1s;"></div>
+          </div>
+        </div>
+
+        <!-- Resultado -->
+        <div id="upload-result" style="display:none; margin-top:1rem; padding:0.9rem; border-radius:4px; font-size:0.85rem;"></div>
+
+      </div>
+
+      <!-- VISTA PREVIA DE CARTA ACTUAL -->
+      <div id="carta-preview-block" style="display:none; background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.08); border-radius:6px; padding:1.2rem;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.8rem;">
+          <p style="font-size:0.82rem; font-weight:700; color:#fdfaf5;">Carta vigente</p>
+          <button onclick="deleteCarta()"
+            style="padding:0.35rem 0.8rem; border:1px solid rgba(231,76,60,0.4); background:none; color:#e74c3c; cursor:pointer; font-family:'Lato',sans-serif; font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; border-radius:3px;">
+            Eliminar
+          </button>
+        </div>
+        <div id="carta-mini-pdf" style="width:100%; height:220px; border-radius:4px; overflow:hidden; background:#111;">
+          <iframe id="carta-iframe" style="width:100%; height:100%; border:none;"></iframe>
+        </div>
+        <a id="carta-download" href="#" download="carta-el-viajero.pdf"
+          style="display:inline-flex; align-items:center; gap:6px; margin-top:0.8rem; font-size:0.75rem; color:#d4a843; text-decoration:none; letter-spacing:0.1em;">
+          ↓ Descargar carta actual
+        </a>
+      </div>
+
+      <p style="font-size:0.72rem; color:#8a7f78; margin-top:2rem; line-height:1.7; text-align:center;">
+        Cuando subís una carta nueva, la anterior se reemplaza automáticamente.<br>
+        Los clientes ven la versión actualizada de inmediato.
+      </p>
+
+    </div>
+  </div>
+</div>
+
+<!-- BOTÓN FLOTANTE WHATSAPP PEDIDO -->
+<a href="https://wa.me/543764830275?text=Hola!%20Quiero%20hacer%20un%20pedido%20en%20El%20Viajero%20🍖" target="_blank" class="wa-fab" aria-label="Hacer pedido por WhatsApp">
+  <div class="wa-pulse"></div>
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.555 4.116 1.527 5.845L.057 23.886l6.218-1.433A11.954 11.954 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 0 1-5.003-1.368l-.36-.213-3.69.851.871-3.597-.234-.371A9.818 9.818 0 1 1 12 21.818z"/></svg>
+  <span class="wa-text">¡Hacé tu pedido acá!</span>
+</a>
+
+<!-- BOTÓN ADMIN FLOTANTE (esquina inferior derecha, discreto) -->
+<button id="admin-fab" onclick="openAdmin()"
+  title="Administración"
+  style="position:fixed; bottom:1.5rem; right:1.5rem; z-index:999;
+         width:42px; height:42px; border-radius:50%;
+         background:rgba(26,18,16,0.9); border:1px solid rgba(212,168,67,0.25);
+         color:#d4a843; cursor:pointer; display:flex; align-items:center; justify-content:center;
+         backdrop-filter:blur(6px); transition:border-color 0.2s, transform 0.2s;">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/>
+  </svg>
+</button>
+
+<script>
+// ── Tab switcher ──
+function switchTab(id, btn) {
+  document.querySelectorAll('.menu-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  btn.classList.add('active');
+}
+
+// ── Admin credentials (cambiar acá) ──
+const ADMIN_USER = 'viajero';
+const ADMIN_PASS = 'elviajero2025';
+const STORAGE_KEY = 'elviajero_carta_pdf';
+const SESSION_KEY = 'elviajero_admin_session';
+
+// ── Abrir/cerrar panel ──
+function openAdmin() {
+  document.getElementById('admin-overlay').style.display = 'block';
+  document.body.style.overflow = 'hidden';
+  if (sessionStorage.getItem(SESSION_KEY) === '1') {
+    showPanel();
+  } else {
+    document.getElementById('admin-login').style.display = 'block';
+    document.getElementById('admin-panel').style.display = 'none';
+  }
+}
+function closeAdmin() {
+  document.getElementById('admin-overlay').style.display = 'none';
+  document.body.style.overflow = '';
+}
+
+// ── Login ──
+function doLogin() {
+  const u = document.getElementById('admin-user').value.trim();
+  const p = document.getElementById('admin-pass').value;
+  if (u === ADMIN_USER && p === ADMIN_PASS) {
+    sessionStorage.setItem(SESSION_KEY, '1');
+    document.getElementById('login-error').style.display = 'none';
+    showPanel();
+  } else {
+    document.getElementById('login-error').style.display = 'block';
+    document.getElementById('admin-pass').value = '';
+  }
+}
+document.addEventListener('keydown', e => {
+  if (e.key === 'Enter' && document.getElementById('admin-overlay').style.display !== 'none') doLogin();
+});
+
+function doLogout() {
+  sessionStorage.removeItem(SESSION_KEY);
+  document.getElementById('admin-panel').style.display = 'none';
+  document.getElementById('admin-login').style.display = 'block';
+  document.getElementById('admin-user').value = '';
+  document.getElementById('admin-pass').value = '';
+}
+
+function showPanel() {
+  document.getElementById('admin-login').style.display = 'none';
+  document.getElementById('admin-panel').style.display = 'block';
+  refreshCartaStatus();
+}
+
+// ── PDF storage ──
+function refreshCartaStatus() {
+  const el = document.getElementById('carta-estado');
+  const preview = document.getElementById('carta-preview-block');
+  try {
+    const saved = window.storage ? null : localStorage.getItem(STORAGE_KEY);
+    // Intentar con window.storage (sistema persistente del artifact)
+    if (window.storage) {
+      window.storage.get(STORAGE_KEY).then(res => {
+        if (res && res.value) {
+          const meta = JSON.parse(res.value);
+          el.innerHTML = '<span style="color:#27ae60;">✓</span> Carta cargada: <strong style="color:#fdfaf5;">' + meta.nombre + '</strong> · subida el ' + meta.fecha;
+          mostrarPreview(meta.dataUrl);
+          preview.style.display = 'block';
+        } else {
+          el.innerHTML = '<span style="color:#e67e22;">—</span> No hay carta cargada aún. Subí el PDF para que aparezca en la web.';
+          preview.style.display = 'none';
+        }
+      }).catch(() => sinStorageMsg(el, preview));
+    } else {
+      sinStorageMsg(el, preview);
+    }
+  } catch(e) { sinStorageMsg(el, preview); }
+}
+
+function sinStorageMsg(el, preview) {
+  el.innerHTML = '<span style="color:#e67e22;">—</span> No hay carta cargada aún. Subí el PDF para que aparezca en la web.';
+  preview.style.display = 'none';
+}
+
+function mostrarPreview(dataUrl) {
+  document.getElementById('carta-iframe').src = dataUrl;
+  document.getElementById('carta-download').href = dataUrl;
+}
+
+// ── Manejo del PDF ──
+function handleDrop(e) {
+  e.preventDefault();
+  document.getElementById('drop-zone').style.borderColor = 'rgba(212,168,67,0.3)';
+  document.getElementById('drop-zone').style.background = '';
+  const file = e.dataTransfer.files[0];
+  if (file && file.type === 'application/pdf') handlePDF(file);
+  else showResult('error', 'Por favor elegí un archivo PDF.');
+}
+
+function handlePDF(file) {
+  if (!file) return;
+  if (file.type !== 'application/pdf') { showResult('error', 'El archivo debe ser un PDF.'); return; }
+  if (file.size > 4.5 * 1024 * 1024) { showResult('error', 'El PDF es demasiado grande. Máximo 4.5 MB.'); return; }
+
+  const prog = document.getElementById('upload-progress');
+  const bar  = document.getElementById('progress-bar');
+  const pct  = document.getElementById('upload-pct');
+  document.getElementById('upload-filename').textContent = file.name;
+  prog.style.display = 'block';
+  document.getElementById('upload-result').style.display = 'none';
+
+  const reader = new FileReader();
+  let fakeProgress = 0;
+  const interval = setInterval(() => {
+    fakeProgress = Math.min(fakeProgress + 8, 85);
+    bar.style.width = fakeProgress + '%';
+    pct.textContent = fakeProgress + '%';
+  }, 80);
+
+  reader.onload = async function(e) {
+    clearInterval(interval);
+    bar.style.width = '100%'; pct.textContent = '100%';
+
+    const dataUrl = e.target.result;
+    const ahora = new Date().toLocaleDateString('es-AR', { day:'2-digit', month:'2-digit', year:'numeric' });
+    const meta = { nombre: file.name, fecha: ahora, dataUrl };
+
+    try {
+      if (window.storage) {
+        await window.storage.set(STORAGE_KEY, JSON.stringify(meta));
+        setTimeout(() => {
+          prog.style.display = 'none';
+          showResult('ok', '¡Carta actualizada! Los clientes ya pueden verla.');
+          refreshCartaStatus();
+          actualizarCartaEnSitio(dataUrl, file.name);
+        }, 400);
+      } else {
+        throw new Error('no storage');
+      }
+    } catch(err) {
+      prog.style.display = 'none';
+      showResult('error', 'No se pudo guardar. Intentá de nuevo.');
+    }
+  };
+  reader.readAsDataURL(file);
+}
+
+async function deleteCarta() {
+  if (!confirm('¿Eliminás la carta actual?')) return;
+  try {
+    if (window.storage) await window.storage.delete(STORAGE_KEY);
+  } catch(e) {}
+  document.getElementById('carta-preview-block').style.display = 'none';
+  document.getElementById('carta-estado').innerHTML = '<span style="color:#e67e22;">—</span> No hay carta cargada aún.';
+  showResult('ok', 'Carta eliminada correctamente.');
+}
+
+function showResult(tipo, msg) {
+  const el = document.getElementById('upload-result');
+  el.style.display = 'block';
+  if (tipo === 'ok') {
+    el.style.background = 'rgba(39,174,96,0.1)';
+    el.style.borderLeft = '3px solid #27ae60';
+    el.style.color = '#27ae60';
+    el.innerHTML = '✓ ' + msg;
+  } else {
+    el.style.background = 'rgba(231,76,60,0.1)';
+    el.style.borderLeft = '3px solid #e74c3c';
+    el.style.color = '#e74c3c';
+    el.innerHTML = '✗ ' + msg;
+  }
+}
+
+// ── Actualizar sección de carta en el sitio público ──
+function actualizarCartaEnSitio(dataUrl, nombre) {
+  // Busca si ya existe el bloque de carta PDF en el sitio y lo actualiza
+  let bloque = document.getElementById('carta-pdf-publica');
+  if (!bloque) {
+    // Insertar antes de la sección del menú o donde corresponda
+    const menuSection = document.getElementById('menu');
+    if (menuSection) {
+      bloque = document.createElement('div');
+      bloque.id = 'carta-pdf-publica';
+      bloque.style.cssText = 'background:#110d0b; padding:0 0 3rem; text-align:center;';
+      menuSection.parentNode.insertBefore(bloque, menuSection);
+    }
+  }
+  if (bloque) {
+    bloque.innerHTML = `
+      <div style="max-width:700px; margin:0 auto; padding:0 1.5rem;">
+        <p style="font-size:0.7rem; letter-spacing:0.35em; text-transform:uppercase; color:#d4a843; font-weight:700; margin-bottom:0.5rem;">Carta actualizada</p>
+        <p style="font-family:'Playfair Display',serif; font-size:1.6rem; color:#fdfaf5; margin-bottom:1.5rem; font-weight:700;">Menú <em style="color:#c0392b; font-style:italic;">vigente</em></p>
+        <iframe src="${dataUrl}" style="width:100%; height:600px; border:1px solid rgba(212,168,67,0.2); border-radius:4px;"></iframe>
+        <a href="${dataUrl}" download="carta-el-viajero.pdf"
+          style="display:inline-flex; align-items:center; gap:8px; margin-top:1rem; font-size:0.78rem; color:#d4a843; text-decoration:none; border:1px solid rgba(212,168,67,0.3); padding:0.6rem 1.3rem; letter-spacing:0.15em; text-transform:uppercase; font-weight:700; transition:background 0.2s;">
+          ↓ Descargar carta
+        </a>
+      </div>`;
+  }
+}
+
+// ── Traductor ES / EN ──
+const translations = {
+  es: {
+    // Franja dorada
+    'Parrilla al carbón': 'Parrilla al carbón',
+    'Comidas del día': 'Comidas del día',
+    'Atención familiar': 'Atención familiar',
+    'Ingredientes frescos': 'Ingredientes frescos',
+    'strip-1': 'Parrilla al carbón',
+    'strip-2': 'Platos del día',
+    'strip-3': 'Atención familiar',
+    'strip-4': 'Ingredientes frescos',
+    // Nosotros
+    'section-nosotros-title': 'Un lugar que <em>sabe</em> a hogar',
+    'section-nosotros-p1': 'El Viajero nació de las manos de una familia misionera con una sola convicción: que una buena comida puede hacerte sentir en casa, aunque estés lejos. Desde Dos de Mayo, cocinamos con fuego real, ingredientes frescos y el cariño de siempre.',
+    'section-nosotros-p2': 'Somos un comedor de parrilla con alma familiar, donde cada corte se hace a las brasas y cada plato del día sale de la cocina como si fuera para la propia mesa.',
+    'feat1-title': 'Parrilla a las brasas',
+    'feat1-body': 'Cortes seleccionados al punto que pedís, con el ahumado que solo da el carbón.',
+    'feat2-title': 'Comida casera del día',
+    'feat2-body': 'Guisos, pastas, minutas y sopas que cambian según la temporada y los productos locales.',
+    'feat3-title': 'Para toda la familia',
+    'feat3-body': 'Ambiente cómodo, porciones generosas y atención de personas que te conocen por el nombre.',
+    // Menú
+    'section-menu-label': 'Lo que servimos',
+    'section-menu-title': 'Nuestra <em>carta</em>',
+    'tab-espeto': '⭐ Espeto Corrido', 'tab-dia': 'Plato del día', 'tab-carta': 'A la carta',
+    'espeto-banner-title': 'Espeto Corrido — La especialidad de la casa',
+    'espeto-banner-desc': 'Asado argentino a la manera de El Viajero: comés todo lo que quieras, a tu ritmo. Las brasas nunca se apagan. Incluye todo lo que ves acá abajo — sin límites, sin apuros.',
+    'espeto-item1-name': 'Carnes a las brasas — sin límite',
+    'espeto-item1-desc': 'Asado de tira, vacío, chorizos, morcilla y lo que salga del fuego ese día',
+    'espeto-item2-name': 'Ensaladas frescas',
+    'espeto-item2-desc': 'Mixta, de tomate, de zanahoria — se reponen durante toda la comida',
+    'espeto-item3-name': 'Pickles & encurtidos',
+    'espeto-item3-desc': 'Pepinillos, zanahorias, cebolla — para equilibrar el asado',
+    'espeto-item4-name': 'Mandioca frita',
+    'espeto-item4-desc': 'El acompañamiento misionero por excelencia, crocante y abundante',
+    'espeto-item5-name': 'Pan casero',
+    'espeto-item5-desc': 'Horneado en el día, para acompañar cada corte',
+    'espeto-nota': '<strong style="color:var(--gold);">¿Cuánto cuesta?</strong> — Consultanos por WhatsApp o al llegar. El precio puede variar según el día. Reservas para grupos recomendadas con anticipación.',
+    'dia-intro': 'Cada día hay un plato diferente, preparado con lo que trae la temporada. Nunca es fijo — pero siempre es casero y abundante. <strong style="color:var(--cream);">Todos los platos incluyen ensalada, encurtidos, pan y mandioca frita.</strong>',
+    'dia-item1-name': 'Guiso de poroto o lentejas',
+    'dia-item1-desc': 'Receta casera con verduras, chorizo y el toque de siempre',
+    'dia-item2-name': 'Pastel de papa',
+    'dia-item2-desc': 'Carne picada con puré gratinado, directo al horno',
+    'dia-item3-name': 'Canelones',
+    'dia-item3-desc': 'De carne o de verdura, con salsa blanca y tuco',
+    'dia-item4-name': 'Pastas del día',
+    'dia-item4-desc': 'Fideos, ñoquis o tallarines — con la salsa que corresponda ese día',
+    'dia-item5-name': 'Carne a la olla / Estofado',
+    'dia-item5-desc': 'Cocción lenta, caldosa y con todas las verduras',
+    'dia-item6-name': 'Y mucho más…',
+    'dia-item6-desc': 'El menú cambia cada día. Consultanos por WhatsApp para saber qué hay hoy',
+    'dia-incluye': '<strong style="color:var(--gold);">Todos los platos incluyen:</strong> ensalada fresca · encurtidos · mandioca frita',
+    'carta-intro': 'Platos disponibles todos los días, sin importar el menú del momento. <strong style="color:var(--cream);">Todos incluyen ensalada, encurtidos y mandioca frita.</strong>',
+    'carta-item1-name': 'Chuleta simple',
+    'carta-item1-desc': 'A las brasas o a la plancha, jugosa y bien temperada',
+    'carta-item2-name': 'Chuleta a caballo',
+    'carta-item2-desc': 'Con huevo frito encima — el clásico que nunca falla',
+    'carta-item3-name': 'Milanesa',
+    'carta-item3-desc': 'Rebozada a la manera casera, bien crocante',
+    'carta-item4-name': 'Marinera',
+    'carta-item4-desc': 'Receta de la casa, un clásico que no falla',
+    'carta-item5-name': 'Pollo a la plancha',
+    'carta-item5-desc': 'Jugoso, bien condimentado y cocinado al punto justo',
+    'carta-incluye': '<strong style="color:var(--gold);">Todos los platos incluyen:</strong> ensalada fresca · encurtidos · mandioca frita',
+    'menu-nota': '* Los precios varían. Consultanos por WhatsApp o al llegar al local para el precio del día.',
+    // Especialidades
+    'section-espec-label': 'Lo que nos distingue',
+    'section-espec-title': 'Nuestras <em>especialidades</em>',
+    'espec1-title': 'El asado de los viernes',
+    'espec1-body': 'El ritual más esperado de la semana. Brasas lentas, cortes enteros y el aroma que se siente desde la vereda. Una tradición que mantenemos desde el primer día.',
+    'espec2-title': 'Guisos de estación',
+    'espec2-body': 'En invierno misionero no hay nada como un guiso contundente. Cambiamos la receta con las estaciones y los productos que consigue la familia en el mercado local.',
+    'espec3-title': 'Chimichurri de la casa',
+    'espec3-body': 'Nuestra receta secreta, que acompaña cada corte desde que abrimos las puertas. Ni muy picante, ni muy suave — el equilibrio justo que aprendimos en familia.',
+    // Contacto
+    'section-contacto-label': 'Vení a visitarnos',
+    'section-contacto-title': 'Horarios & <em>contacto</em>',
+    'horarios-label': 'Horarios de atención',
+    'como-llegar-label': 'Cómo encontrarnos',
+    'eventos-label': '¿Tenés un evento?',
+    'eventos-body': 'Organizamos almuerzos y cenas para grupos, cumpleaños y reuniones familiares. Consultanos disponibilidad y armamos algo especial para vos.',
+    'eventos-btn': 'Consultar por evento',
+    'pedidos-txt': 'También hacemos <strong style="color:var(--cream);">pedidos para llevar</strong>. Avisanos con anticipación y preparamos todo listo para buscar.',
+    // Reseñas
+    'section-resenas-label': 'Lo que dicen nuestros clientes',
+    'section-resenas-title': 'Opiniones en <em>Google</em>',
+    'ver-mas-btn': 'Ver todas las opiniones en Google ↗',
+    // CTA
+    'cta-title': 'Te esperamos en la mesa',
+    'cta-body': 'Vení con hambre y con ganas. El fuego ya está encendido.',
+    'cta-btn': 'Ver en Google Maps',
+    // WA fab
+    'wa-text': '¡Hacé tu pedido acá!',
+    // Footer
+    'footer-sub': 'Dos de Mayo · Misiones · Argentina',
+  },
+  en: {
+    'strip-1': 'Charcoal grill',
+    'strip-2': 'Daily specials',
+    'strip-3': 'Family service',
+    'strip-4': 'Fresh ingredients',
+    'section-nosotros-label': 'Our story',
+    'section-nosotros-title': 'A place that <em>tastes</em> like home',
+    'section-nosotros-p1': 'El Viajero was born from the hands of a family from Misiones with one conviction: that a good meal can make you feel at home, even far away. From Dos de Mayo, we cook with real fire, fresh ingredients and the warmth we\'ve always had.',
+    'section-nosotros-p2': 'We are a family-spirited grill and diner, where every cut is cooked over coals and every daily dish comes out of the kitchen as if it were for our own table.',
+    'feat1-title': 'Grilled over coals',
+    'feat1-body': 'Hand-picked cuts cooked just the way you like, with the smokiness only real charcoal gives.',
+    'feat2-title': 'Home-cooked daily specials',
+    'feat2-body': 'Stews, pasta, and soups that change with the season and local produce.',
+    'feat3-title': 'For the whole family',
+    'feat3-body': 'Comfortable atmosphere, generous portions and service from people who know you by name.',
+    'section-menu-label': 'What we serve',
+    'section-menu-title': 'Our <em>menu</em>',
+    'tab-espeto': '⭐ Espeto Corrido', 'tab-dia': 'Daily special', 'tab-carta': 'À la carte',
+    'espeto-banner-title': 'Espeto Corrido — The house specialty',
+    'espeto-banner-desc': 'Argentine BBQ, El Viajero style: eat as much as you want, at your own pace. The coals never go out. Everything listed below is included — no limits, no rush.',
+    'espeto-item1-name': 'Grilled meats — unlimited',
+    'espeto-item1-desc': 'Beef ribs, flank steak, chorizos, blood sausage and whatever comes off the fire that day',
+    'espeto-item2-name': 'Fresh salads',
+    'espeto-item2-desc': 'Mixed, tomato, carrot — replenished throughout the meal',
+    'espeto-item3-name': 'Pickles & relishes',
+    'espeto-item3-desc': 'Gherkins, carrots, onion — to balance the BBQ',
+    'espeto-item4-name': 'Fried cassava',
+    'espeto-item4-desc': 'The Misiones classic — crispy and generous',
+    'espeto-item5-name': 'House bread',
+    'espeto-item5-desc': 'Baked fresh daily, to go with every cut',
+    'espeto-nota': '<strong style="color:var(--gold);">How much does it cost?</strong> — Ask us on WhatsApp or when you arrive. Price may vary by day. Bookings for groups recommended in advance.',
+    'dia-intro': 'Every day there is a different dish, made with what the season brings. Never fixed — but always home-cooked and generous. <strong style="color:var(--cream);">All dishes include salad, pickles, bread and fried cassava.</strong>',
+    'dia-item1-name': 'Bean or lentil stew',
+    'dia-item1-desc': 'Home recipe with vegetables, chorizo and the usual touch',
+    'dia-item2-name': 'Shepherd\'s pie',
+    'dia-item2-desc': 'Minced meat topped with golden mashed potato, straight from the oven',
+    'dia-item3-name': 'Cannelloni',
+    'dia-item3-desc': 'Meat or vegetable filling, with béchamel and tomato sauce',
+    'dia-item4-name': 'Pasta of the day',
+    'dia-item4-desc': 'Noodles, gnocchi or tagliatelle — with whatever sauce fits that day',
+    'dia-item5-name': 'Braised beef / Stew',
+    'dia-item5-desc': 'Slow-cooked, brothy and loaded with vegetables',
+    'dia-item6-name': 'And much more…',
+    'dia-item6-desc': 'The menu changes every day. Ask us on WhatsApp to find out what\'s on today',
+    'dia-incluye': '<strong style="color:var(--gold);">All dishes include:</strong> fresh salad · pickles · fried cassava',
+    'carta-intro': 'Available every day, regardless of the daily special. <strong style="color:var(--cream);">All include salad, pickles and fried cassava.</strong>',
+    'carta-item1-name': 'Pork chop',
+    'carta-item1-desc': 'Grilled or pan-seared, juicy and well seasoned',
+    'carta-item2-name': 'Pork chop on horseback',
+    'carta-item2-desc': 'Topped with a fried egg — the classic that never fails',
+    'carta-item3-name': 'Milanesa',
+    'carta-item3-desc': 'Home-style breaded cutlet, nice and crispy',
+    'carta-item4-name': 'Marinera',
+    'carta-item4-desc': 'House recipe, a classic that never disappoints',
+    'carta-item5-name': 'Grilled chicken',
+    'carta-item5-desc': 'Juicy, well seasoned and cooked to perfection',
+    'carta-incluye': '<strong style="color:var(--gold);">All dishes include:</strong> fresh salad · pickles · fried cassava',
+    'menu-nota': '* Prices may vary. Ask us on WhatsApp or when you arrive for the price of the day.',
+    'section-espec-label': 'What sets us apart',
+    'section-espec-title': 'Our <em>specialties</em>',
+    'espec1-title': 'Friday BBQ',
+    'espec1-body': 'The most awaited ritual of the week. Slow coals, whole cuts and the aroma you can smell from the street. A tradition we have kept since day one.',
+    'espec2-title': 'Daily special',
+    'espec2-body': 'Every day something different comes out of the kitchen: stews, shepherd\'s pie, cannelloni, pasta or braised meat. Always home-cooked, always generous, always with full sides.',
+    'espec3-title': 'Everything included',
+    'espec3-body': 'At El Viajero there are no half measures. Every dish comes with fresh salad, pickles and fried cassava. Because here you eat well — for real.',
+    'section-contacto-label': 'Come visit us',
+    'section-contacto-title': 'Hours & <em>contact</em>',
+    'horarios-label': 'Opening hours',
+    'como-llegar-label': 'How to find us',
+    'eventos-label': 'Planning an event?',
+    'eventos-body': 'We host lunches and dinners for groups, birthdays and family gatherings. Ask us about availability and we\'ll put something special together for you.',
+    'eventos-btn': 'Ask about an event',
+    'pedidos-txt': 'We also do <strong style="color:var(--cream);">takeaway orders</strong>. Let us know in advance and we\'ll have everything ready for pickup.',
+    'section-resenas-label': 'What our guests say',
+    'section-resenas-title': 'Reviews on <em>Google</em>',
+    'ver-mas-btn': 'See all reviews on Google ↗',
+    'cta-title': 'We\'ll save you a seat',
+    'cta-body': 'Come hungry and ready. The fire is already burning.',
+    'cta-btn': 'Open in Google Maps',
+    'wa-text': 'Order here!',
+    'footer-sub': 'Dos de Mayo · Misiones · Argentina',
+  }
+};
+
+function setLang(lang, btn) {
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.documentElement.lang = lang;
+  const t = translations[lang];
+
+  // Franja dorada
+  safeHTML('strip-1', t['strip-1']);
+  safeHTML('strip-2', t['strip-2']);
+  safeHTML('strip-3', t['strip-3']);
+  safeHTML('strip-4', t['strip-4']);
+
+  // Nav links
+  document.querySelectorAll('.nav-links a[data-es]').forEach(el => {
+    el.textContent = el.dataset[lang];
+  });
+
+  // Hero
+  document.querySelectorAll('[data-es]').forEach(el => {
+    if (el.tagName === 'A' || el.closest('.nav-links')) return; // ya hecho arriba
+    const val = el.dataset[lang];
+    if (val) el.innerHTML = val;
+  });
+
+  // WA fab text
+  const waText = document.querySelector('.wa-text');
+  if (waText) waText.textContent = t['wa-text'];
+
+  // Sección Nosotros
+  safeHTML('nosotros-label', t['section-nosotros-label']);
+  safeHTML('nosotros-title', t['section-nosotros-title']);
+  safeHTML('nosotros-p1', t['section-nosotros-p1']);
+  safeHTML('nosotros-p2', t['section-nosotros-p2']);
+  safeHTML('feat1-title', t['feat1-title']);
+  safeHTML('feat1-body', t['feat1-body']);
+  safeHTML('feat2-title', t['feat2-title']);
+  safeHTML('feat2-body', t['feat2-body']);
+  safeHTML('feat3-title', t['feat3-title']);
+  safeHTML('feat3-body', t['feat3-body']);
+
+  // Menú
+  safeHTML('menu-label', t['section-menu-label']);
+  safeHTML('menu-title', t['section-menu-title']);
+  safeHTML('tab-espeto-btn', t['tab-espeto']);
+  safeHTML('tab-dia-btn', t['tab-dia']);
+  safeHTML('tab-carta-btn', t['tab-carta']);
+  // Espeto
+  safeHTML('espeto-banner-title', t['espeto-banner-title']);
+  safeHTML('espeto-banner-desc', t['espeto-banner-desc']);
+  safeHTML('espeto-item1-name', t['espeto-item1-name']);
+  safeHTML('espeto-item1-desc', t['espeto-item1-desc']);
+  safeHTML('espeto-item2-name', t['espeto-item2-name']);
+  safeHTML('espeto-item2-desc', t['espeto-item2-desc']);
+  safeHTML('espeto-item3-name', t['espeto-item3-name']);
+  safeHTML('espeto-item3-desc', t['espeto-item3-desc']);
+  safeHTML('espeto-item4-name', t['espeto-item4-name']);
+  safeHTML('espeto-item4-desc', t['espeto-item4-desc']);
+  safeHTML('espeto-item5-name', t['espeto-item5-name']);
+  safeHTML('espeto-item5-desc', t['espeto-item5-desc']);
+  safeHTML('espeto-nota', t['espeto-nota']);
+  // Plato del día
+  safeHTML('dia-intro', t['dia-intro']);
+  safeHTML('dia-item1-name', t['dia-item1-name']);
+  safeHTML('dia-item1-desc', t['dia-item1-desc']);
+  safeHTML('dia-item2-name', t['dia-item2-name']);
+  safeHTML('dia-item2-desc', t['dia-item2-desc']);
+  safeHTML('dia-item3-name', t['dia-item3-name']);
+  safeHTML('dia-item3-desc', t['dia-item3-desc']);
+  safeHTML('dia-item4-name', t['dia-item4-name']);
+  safeHTML('dia-item4-desc', t['dia-item4-desc']);
+  safeHTML('dia-item5-name', t['dia-item5-name']);
+  safeHTML('dia-item5-desc', t['dia-item5-desc']);
+  safeHTML('dia-item6-name', t['dia-item6-name']);
+  safeHTML('dia-item6-desc', t['dia-item6-desc']);
+  safeHTML('dia-incluye', t['dia-incluye']);
+  // A la carta
+  safeHTML('carta-intro', t['carta-intro']);
+  safeHTML('carta-item1-name', t['carta-item1-name']);
+  safeHTML('carta-item1-desc', t['carta-item1-desc']);
+  safeHTML('carta-item2-name', t['carta-item2-name']);
+  safeHTML('carta-item2-desc', t['carta-item2-desc']);
+  safeHTML('carta-item3-name', t['carta-item3-name']);
+  safeHTML('carta-item3-desc', t['carta-item3-desc']);
+  safeHTML('carta-item4-name', t['carta-item4-name']);
+  safeHTML('carta-item4-desc', t['carta-item4-desc']);
+  safeHTML('carta-item5-name', t['carta-item5-name']);
+  safeHTML('carta-item5-desc', t['carta-item5-desc']);
+  safeHTML('carta-incluye', t['carta-incluye']);
+  safeHTML('menu-nota', t['menu-nota']);
+
+  // Especialidades
+  safeHTML('espec-label', t['section-espec-label']);
+  safeHTML('espec-title', t['section-espec-title']);
+  safeHTML('espec1-title', t['espec1-title']);
+  safeHTML('espec1-body', t['espec1-body']);
+  safeHTML('espec2-title', t['espec2-title']);
+  safeHTML('espec2-body', t['espec2-body']);
+  safeHTML('espec3-title', t['espec3-title']);
+  safeHTML('espec3-body', t['espec3-body']);
+
+  // Contacto
+  safeHTML('contacto-label', t['section-contacto-label']);
+  safeHTML('contacto-title', t['section-contacto-title']);
+  safeHTML('horarios-label', t['horarios-label']);
+  safeHTML('como-llegar-label', t['como-llegar-label']);
+  safeHTML('eventos-label', t['eventos-label']);
+  safeHTML('eventos-body', t['eventos-body']);
+  safeHTML('eventos-btn', t['eventos-btn']);
+  safeHTML('pedidos-txt', t['pedidos-txt']);
+
+  // Reseñas
+  safeHTML('resenas-label', t['section-resenas-label']);
+  safeHTML('resenas-title', t['section-resenas-title']);
+  safeHTML('ver-mas-btn', t['ver-mas-btn']);
+
+  // CTA final
+  safeHTML('cta-title', t['cta-title']);
+  safeHTML('cta-body', t['cta-body']);
+  safeHTML('cta-btn', t['cta-btn']);
+
+  // Footer
+  safeHTML('footer-sub', t['footer-sub']);
+}
+
+function safeHTML(id, val) {
+  const el = document.getElementById(id);
+  if (el && val !== undefined) el.innerHTML = val;
+}
+
+// ── Animación de fuego con Canvas ──
+(function initFire() {
+  function start() {
+    const canvas = document.getElementById('fire-canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+
+    function resize() {
+      canvas.width  = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    // Partículas de fuego
+    const particles = [];
+    const PARTICLE_COUNT = 120;
+
+    function randomBetween(a, b) { return a + Math.random() * (b - a); }
+
+    class Particle {
+      constructor() { this.reset(); }
+      reset() {
+        this.x    = randomBetween(canvas.width * 0.15, canvas.width * 0.85);
+        this.y    = canvas.height + randomBetween(0, 30);
+        this.vy   = randomBetween(-2.5, -1.2);
+        this.vx   = randomBetween(-0.6, 0.6);
+        this.life = 0;
+        this.maxLife = randomBetween(60, 130);
+        this.size = randomBetween(6, 22);
+        this.wobble = randomBetween(0, Math.PI * 2);
+        this.wobbleSpeed = randomBetween(0.04, 0.09);
+      }
+      update() {
+        this.life++;
+        this.wobble += this.wobbleSpeed;
+        this.x  += this.vx + Math.sin(this.wobble) * 0.8;
+        this.y  += this.vy;
+        this.vy *= 0.995;
+        if (this.life >= this.maxLife) this.reset();
+      }
+      draw() {
+        const progress = this.life / this.maxLife;
+        const alpha    = progress < 0.2 ? progress / 0.2 : 1 - (progress - 0.2) / 0.8;
+        const size     = this.size * (1 - progress * 0.4);
+
+        // Color: base naranja-rojo, punta amarilla, core blanco
+        let r, g, b;
+        if (progress < 0.3) {
+          // Blanco → amarillo
+          r = 255; g = 255; b = Math.round(255 * (1 - progress / 0.3));
+        } else if (progress < 0.6) {
+          // Amarillo → naranja
+          const t = (progress - 0.3) / 0.3;
+          r = 255; g = Math.round(255 - t * 100); b = 0;
+        } else {
+          // Naranja → rojo oscuro
+          const t = (progress - 0.6) / 0.4;
+          r = Math.round(255 - t * 60); g = Math.round(155 - t * 140); b = 0;
+        }
+
+        const grad = ctx.createRadialGradient(this.x, this.y, 0, this.x, this.y, size);
+        grad.addColorStop(0,   `rgba(${r},${g},${b},${alpha})`);
+        grad.addColorStop(0.4, `rgba(${r},${Math.max(0,g-40)},0,${alpha * 0.7})`);
+        grad.addColorStop(1,   `rgba(${Math.max(0,r-40)},0,0,0)`);
+
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, size, 0, Math.PI * 2);
+        ctx.fillStyle = grad;
+        ctx.fill();
+      }
+    }
+
+    // Brasas en la base
+    class Ember {
+      constructor() { this.reset(); }
+      reset() {
+        this.x    = randomBetween(0, canvas.width);
+        this.y    = canvas.height - randomBetween(0, 20);
+        this.size = randomBetween(1.5, 4);
+        this.alpha = randomBetween(0.4, 1);
+        this.pulse = randomBetween(0, Math.PI * 2);
+        this.pulseSpeed = randomBetween(0.03, 0.07);
+      }
+      update() {
+        this.pulse += this.pulseSpeed;
+        this.alpha = 0.4 + Math.sin(this.pulse) * 0.4;
+      }
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255, ${Math.floor(randomBetween(80,180))}, 0, ${this.alpha})`;
+        ctx.fill();
+      }
+    }
+
+    for (let i = 0; i < PARTICLE_COUNT; i++) {
+      const p = new Particle();
+      p.life = Math.floor(Math.random() * p.maxLife); // distribuir al inicio
+      particles.push(p);
+    }
+    const embers = Array.from({length: 40}, () => new Ember());
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Fondo base: carbón oscuro con brillo rojo desde abajo
+      const bgGrad = ctx.createLinearGradient(0, 0, 0, canvas.height);
+      bgGrad.addColorStop(0,   '#0a0503');
+      bgGrad.addColorStop(0.7, '#1a0800');
+      bgGrad.addColorStop(1,   '#2d0e00');
+      ctx.fillStyle = bgGrad;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.globalCompositeOperation = 'lighter';
+      particles.forEach(p => { p.update(); p.draw(); });
+      embers.forEach(e => { e.update(); e.draw(); });
+      ctx.globalCompositeOperation = 'source-over';
+
+      requestAnimationFrame(animate);
+    }
+    animate();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', start);
+  } else {
+    start();
+  }
+})();
+
+// ── Al cargar la página, mostrar carta guardada si existe ──
+window.addEventListener('load', () => {
+  if (window.storage) {
+    window.storage.get(STORAGE_KEY).then(res => {
+      if (res && res.value) {
+        const meta = JSON.parse(res.value);
+        actualizarCartaEnSitio(meta.dataUrl, meta.nombre);
+      }
+    }).catch(() => {});
+  }
+  // Abrir admin si la URL tiene #admin
+  if (location.hash === '#admin') openAdmin();
+});
+</script>
+</body>
+</html>
